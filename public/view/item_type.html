@@ -1,0 +1,51 @@
+   <div class="content-left" >
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>TYPE CODE</th>
+            <th>NAME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="itemType in itemTypes" ng-click="selector.select($index)" ng-class="{selected: $index === selector.selectedId}">
+            <td ng-bind="itemType.rank"></td>
+            <td ng-bind="itemType.typeCode"></td>
+            <td ng-bind="itemType.name"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- .content-left -->
+
+    <div class="content-right">
+      <table role="list">
+        <thead>
+          <tr role="">
+        　　  <th>#</th>
+            <th>項目名</th>
+            <th>型</th>
+            <th>項目長</th>
+            <th>デフォルト値</th>
+            <th>最大</th>
+            <th>最小</th>
+            <th>単位</th>
+            <th>仕様展開</th>
+            <th>仕様コード長</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="dt in itemTypes[selector.selectedId].typeAttr">
+            <td ng-bind="dt.rank"></td>
+            <td ng-bind="dt.name"></td>
+            <td ng-bind="dt.fieldType"></td>
+            <td ng-bind="dt.fieldLength"></td>
+            <td ng-bind="dt.default"></td>
+            <td ng-bind="dt.max"></td>
+            <td ng-bind="dt.min"></td>
+            <td ng-bind="dt.unit"></td>
+            <td ng-bind="dt.specExpantsion"></td>
+            <td ng-bind="dt.codeLength > 0? dt.codeLength : '-'"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- .content-right -->

@@ -1,0 +1,64 @@
+/*　品目種別 */
+{
+  "_type":'itemtype',
+  typeCode: '種別コード'
+  name: '名称',
+  typeAttr: [　/*種別属性*/
+    {
+      rank: '順序',
+      attrCode: '種別属性コード',
+      name: '名称',
+      field:{
+        type: '入力フィールド型',
+        length: '入力フィールド長'
+      },
+      default: 'デフォルト値',
+      max: '最大値',
+      min: '最小値',
+      unit: '単位',
+      specExpantsion:{ 　/*仕様展開*/
+        codeLength: '展開コード長'
+      }
+    }
+  ]
+}
+
+{
+  "_type": 'itemtype',
+  "typeCode": 'GEM',
+  "name": '石',
+  "typeAttr": [
+    {
+      "rank": 1,
+      "attrCode": 'phi',
+      "name": '径',
+      "field":{
+        "type": 'number',
+        "length": '2'
+      },
+      "default": '',
+      "max": '',
+      "min": '',
+      "unit": 'mm',
+      "specExpantsion": {
+        "codeLength": '2'
+      }
+    },
+    {
+      "rank": 2,
+      "attrCode": 'width',
+      "name": '色',
+      "field":{
+        "type": 'number',
+        "length": '4'
+      },
+      "default": '',
+      "max": '',
+      "min": '',
+      "unit": '',
+      "specExpantsion": {
+        "codeLength": '1'
+      }
+    }
+  ]
+}

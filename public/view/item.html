@@ -1,0 +1,117 @@
+   <div class="content-left" >
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>品目コード</th>
+            <th>名称</th>
+            <th>種別</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items" ng-click="selector.select($index)" ng-class="{selected: $index === selector.selectedId}">
+            <td ng-bind="item.rank"></td>
+            <td ng-bind="item.code"></td>
+            <td ng-bind="item.name"></td>
+            <td ng-bind="item.type"></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>spec</h2>
+      <table role="list">
+        <thead>
+          <tr>
+            <th ng-repeat="attr in itemType.details" ng-bind="attr.name"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="itemAttr in items[selector.selectedId].typeAttrs">
+            <td ng-repeat="attr in itemType.details" ng-bind="itemAttr[attr.no]"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- .content-left -->
+
+    <div class="content-right">
+      <ul class="toolbar">
+        <li>sale</li>
+        <li>purchase</li>
+      </ul>
+      <table role="list">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>名称</th>
+            <th>ロットサイズ</th>
+            <th>単位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="sale in items[selector.selectedId].saleHandle">
+            <td ng-bind="sale.rank"></td>
+            <td ng-bind="sale.name"></td>
+            <td ng-bind="sale.lotsize"></td>
+            <td ng-bind="sale.unit"></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <table role="list">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>項目名</th>
+            <th>型</th>
+            <th>項目長</th>
+            <th>デフォルト値</th>
+            <th>最大</th>
+            <th>最小</th>
+            <th>単位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="dt in itemType.details">
+            <td ng-bind="dt.rank"></td>
+            <td ng-bind="dt.name"></td>
+            <td ng-bind="dt.fieldType"></td>
+            <td ng-bind="dt.fieldLength"></td>
+            <td ng-bind="dt.default"></td>
+            <td ng-bind="dt.max"></td>
+            <td ng-bind="dt.min"></td>
+            <td ng-bind="dt.unit"></td>
+          </tr>
+        </tbody>
+      </table>
+      <table role="list">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>CODE</th>
+            <th>value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td><input type="text"></input></td>
+            <td><input type="text"></input></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><input type="text"></input></td>
+            <td><input type="text"></input></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><input type="text"></input></td>
+            <td><input type="text"></input></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><input type="text"></input></td>
+            <td><input type="text"></input></td>
+          </tr>
+        </tbody>
+      </table>
+    </div><!-- .content-right -->
