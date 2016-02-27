@@ -1,27 +1,48 @@
-   <div class="content-left" >
-      <table role="list">
-        <thead>
-          <tr>
-            <th>仕様コード</th>
-            <th ng-repeat="attr in itemType.typeAttr" ng-bind="attr.name"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="itemAttr in items[0].typeAttrs">
-            <td ng-bind="itemAttr.specCode"></td>
-            <td ng-repeat="attr in itemType.typeAttr" ng-bind="itemAttr[attr.attrCode]"></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="content-left" >
+    <ul>
+        <li>
+          <h3>color</h3>
+          <table role="list">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
     </div><!-- .content-left -->
 
     <div class="content-right">
       <table>
         <tbody>
-          <th>format</th><td>{{itemType.specCodeFormat}}</td>
+          <th>format</th><td>{{itemType.attrs}}</td>
         </tbody>
       </table>
-      {{specs}}
       <table role="list">
         <thead>
           <tr>
@@ -51,36 +72,41 @@
             <td ng-bind="dt.specExpantsion? dt.specExpantsion.codeLength : '-'"></td>
           </tr>
         </tbody>
-      </table>
-      <table role="list">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>CODE</th>
-            <th>value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>0</td>
-            <td><input type="text"></input></td>
-            <td><input type="text"></input></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td><input type="text"></input></td>
-            <td><input type="text"></input></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><input type="text"></input></td>
-            <td><input type="text"></input></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><input type="text"></input></td>
-            <td><input type="text"></input></td>
-          </tr>
-        </tbody>
-      </table>
+      </table>     
+      <ul class="tree" aria-expanded="true">
+        <li>
+          <h3>{{specs}}</h3>
+          <table role="list">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Code</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
     </div><!-- .content-right -->

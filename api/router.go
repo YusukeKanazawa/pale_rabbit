@@ -1,29 +1,43 @@
 package api
 
 import (
-	"fmt"
+	"github.com/gorilla/mux"
 	"net/http"
-//	"regexp"
+	//	"fmt"
 )
 
-//var route_list []*Route = []*Route{
-//	&Route{
-//		Method: "GET",
-//		Path:   "/api/items/{code}",
-//	},
-//}
+type Route struct {
+	Method      string
+	Pattern     string
+	HandlerFunc http.HandlerFunc
+}
+type Routes []Route
 
-func Router(w http.ResponseWriter, r *http.Request) {
-	path := r.RequestURI
-//	for _, route := range route_list{
-//		route.Path
-//	}
+//var index = template.Must(template.ParseFiles(
+//	"view/_base.html",
+//	"view/index.html",
+//))
 
-	fmt.Fprint(w, path)
+var routes = Routes{
+	Route{
+		Method:      "GET",
+		Pattern:     "/itemType",
+		HandlerFunc: ItemTypeHandler,
+	},
+	Route{
+		Method:      "PUT",
+		Pattern:     "/itemType",
+		HandlerFunc: ItemTypePutHandler,
+	},
 }
 
-//type Route struct {
-//	Method  string
-//	Path    string
-//	Handler http.Handler
-//}
+func NewRouter() *mux.Router {
+	router := mux.NewRouter().StrictSlash(true)
+
+	for _, route := range routes {
+//		router.Methods(route.Method).Path(route.Pattern).Handler(route.HandlerFunc)
+		router.Methods(route.Method).PathPrefix("/api").Path(route.Pattern).Handler(route.HandlerFunc)
+	}
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))
+	return router
+}

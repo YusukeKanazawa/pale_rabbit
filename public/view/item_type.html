@@ -9,8 +9,8 @@
         </thead>
         <tbody>
           <tr ng-repeat="itemType in itemTypes" ng-click="selector.select($index)" ng-class="{selected: $index === selector.selectedId}">
-            <td ng-bind="itemType.rank"></td>
-            <td ng-bind="itemType.typeCode"></td>
+            <td ng-bind="$index+1"></td>
+            <td ng-bind="itemType.code"></td>
             <td ng-bind="itemType.name"></td>
           </tr>
         </tbody>
@@ -18,34 +18,28 @@
     </div><!-- .content-left -->
 
     <div class="content-right">
+    <p>品目種別属性</p>
       <table role="list">
         <thead>
           <tr role="">
         　　  <th>#</th>
-            <th>項目名</th>
-            <th>型</th>
-            <th>項目長</th>
-            <th>デフォルト値</th>
-            <th>最大</th>
-            <th>最小</th>
-            <th>単位</th>
-            <th>仕様展開</th>
-            <th>仕様コード長</th>
+            <th>コード</th>
+            <th>名称</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="dt in itemTypes[selector.selectedId].typeAttr">
-            <td ng-bind="dt.rank"></td>
-            <td ng-bind="dt.name"></td>
-            <td ng-bind="dt.fieldType"></td>
-            <td ng-bind="dt.fieldLength"></td>
-            <td ng-bind="dt.default"></td>
-            <td ng-bind="dt.max"></td>
-            <td ng-bind="dt.min"></td>
-            <td ng-bind="dt.unit"></td>
-            <td ng-bind="dt.specExpantsion"></td>
-            <td ng-bind="dt.codeLength > 0? dt.codeLength : '-'"></td>
+          <tr ng-repeat="attr in itemTypes[selector.selectedId].attrs"
+          ng-class="{selected: $index === selector.selectedId, inserted: attr.isInserted}">
+            <td ng-bind="attr.rank"></td>
+            <td ng-bind="attr.attr_code"></td>
+            <td ng-bind="attr.attr_name"></td>
           </tr>
+          <tr>
+            <td>*</td>
+            <td><input type="text" name="attr_code" ng-model="attrCode"/></td>
+            <td><input type="text" name="attr_name" ng-model="attrName"ng-blur="append()"/></td>
+          </tr>
+          <tr>
         </tbody>
-      </table>
+      </table> 
     </div><!-- .content-right -->

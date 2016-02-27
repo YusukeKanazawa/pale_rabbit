@@ -10,7 +10,6 @@ body, input{
 div, table, tr, td, th{
   box-sizing: border-box;
 }
-
 table{
   border: 1px solid lightgray;
   border-radius:8px;
@@ -45,8 +44,15 @@ nav {
   z-index: 10000;
 }
 ul {
+  list-style: none;
   margin:0;
   padding:0;
+}
+li > ul{
+  padding-left:20px;
+}
+ul h3{
+  margin:0;
 }
 tbody tr:hover{
   box-shadow: 
@@ -63,6 +69,12 @@ tbody tr.selected{
 tbody tr.selected td{
   color:white;
 }
+
+tbody tr.inserted{
+  background: #efe;
+  border: 1px solid #acB;
+}
+
 .content {
   position:relative;
   padding-left:100px;
