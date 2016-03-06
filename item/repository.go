@@ -82,7 +82,7 @@ func (repo *mySqlRepository) GetAll() []*ItemType {
 		for attr_rows.Next() {
 			attr := &itemTypeAttr{}
 			err = attr_rows.Scan(&attr.AttrCode, &attr.AttrName, &attr.Rank, &attr.UpdatedBy, &attr.UpdatedAt)
-			itemType.Attrs = append(itemType.Attrs, attr)
+			itemType.Attrs[attr.AttrCode] = attr
 
 			log.Println(attr)
 		}
@@ -109,7 +109,7 @@ func (repo *mySqlRepository) FindByCode(code string) *ItemType {
 	for attr_rows.Next() {
 		attr := &itemTypeAttr{}
 		err = attr_rows.Scan(&attr.AttrCode, &attr.AttrName, &attr.Rank, &attr.UpdatedBy, &attr.UpdatedAt)
-		itemType.Attrs = append(itemType.Attrs, attr)
+		itemType.Attrs[attr.AttrCode] = attr
 
 		log.Println(attr)
 	}
@@ -136,7 +136,6 @@ func GetRepository(repoType string) repositor {
 		}
 		return memRepository
 	}
-
 }
 
 // -------

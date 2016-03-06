@@ -96,6 +96,16 @@ var module = angular.module('pale_rabbit', ['ngRoute', 'ngResource']);
   //   ]}
   // ];
 
+module.directive('ngInitFocus', [function() {
+  var timer;
+  return function(scope, elem, attr) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function() {
+      elem.focus();
+    }, 10);
+    scope.initFocusElem = elem;
+  };
+}]);
 
 module.config(function($routeProvider) {
   $routeProvider
@@ -126,9 +136,13 @@ module.controller('itemTypesController', function($scope, $http, $resource) {
     selectedId: 0,
   };
   // 追加
-  $scope.append = function() {
+  $scope.append = function(e) {
+    if(e.keyCode!=13){
+      return
+    }
     var selected_item_type = $scope.itemTypes[$scope.selector.selectedId];
-    console.log($scope.attrCode);
+
+
     if(!$scope.attrCode){
       console.log('code is blank');
       return
@@ -156,13 +170,12 @@ module.controller('itemTypesController', function($scope, $http, $resource) {
       "isInserted": true
     };
 
-    selected_item_type.attrs.push(new_attr)
+    selected_item_type.attrs.push(new_attr);
 
     // reset form models.;
     $scope.attrCode = '';
     $scope.attrName = '';
-
-
+    $scope.initFocusElem.focus();
   };
   $scope.reset = function(){
     $scope.attrCode = '';

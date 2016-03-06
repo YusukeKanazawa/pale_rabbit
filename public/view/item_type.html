@@ -20,6 +20,11 @@
     <div class="content-right">
     <p>品目種別属性</p>
       <table role="list">
+        <caption>
+        <div>
+          <button>commit</button>
+        <div>
+        </caption>
         <thead>
           <tr role="">
         　　  <th>#</th>
@@ -32,12 +37,12 @@
           ng-class="{selected: $index === selector.selectedId, inserted: attr.isInserted}">
             <td ng-bind="attr.rank"></td>
             <td ng-bind="attr.attr_code"></td>
-            <td ng-bind="attr.attr_name"></td>
+            <td ng-bind="attr.attr_name" ></td>
           </tr>
           <tr>
             <td>*</td>
-            <td><input type="text" name="attr_code" ng-model="attrCode"/></td>
-            <td><input type="text" name="attr_name" ng-model="attrName"ng-blur="append()"/></td>
+            <td><input type="text" name="attr_code" ng-model="attrCode" ng-init-focus/></td>
+            <td><input type="text" name="attr_name" ng-model="attrName" ng-keyup="append($event)"/></td>
           </tr>
           <tr>
         </tbody>
